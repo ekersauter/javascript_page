@@ -47,8 +47,10 @@ function buildPage() {
   textNode.innerHTML = "<H2>" + div1.id + "</H2>Verander de hoogte en de breedte van" +
     "<br> dit window met een drag van de rechter onderhoek.";
   textNode2 = textNode.cloneNode(true);
-  textNode2.innerHTML = "<H2>" + div2.id + "</H2>Verander de hoogte en de breedte van" +
-    "<br> dit window met een drag van de rechter onderhoek.";
+  textNode2.innerHTML = "<H2>Div2</H2>" +
+    "Browser: " + navigator.appName + " " + navigator.appCodeName + navigator.userAgent + 
+    "<br> Support:" + GetMimeTypes() +
+    "<br> Taalinstelling:" + navigator.language || navigator.userLanguage;
 
   //Alle elementen verdelen over de `parents`
   document.body.appendChild(header);
@@ -94,13 +96,6 @@ function buildPage() {
       " <br> bottom: " + div1.getBoundingClientRect().bottom +
       " <br> right: " + div1.getBoundingClientRect().right +
       " <br> left: " + div1.getBoundingClientRect().left;
-    textNode2.innerHTML = "<H2>Div2</H2>" +
-      "Width: " + div2.getBoundingClientRect().width +
-      " <br> height: " + div2.getBoundingClientRect().height +
-      " <br> top: " + div2.getBoundingClientRect().top +
-      " <br> bottom: " + div2.getBoundingClientRect().bottom +
-      " <br> right: " + div2.getBoundingClientRect().right +
-      " <br> left: " + div2.getBoundingClientRect().left;
   })
 
 }
@@ -112,4 +107,20 @@ if (window.attachEvent) {
   window.addEventListener('load', buildPage, false);
 } else {
   document.addEventListener('load', fillNode, false);
+}
+
+//Ondersteuning JavaScript
+function GetMimeTypes() {
+    var message = "";
+    // Bij internet Explorer blijft dit leeg
+    if (navigator.mimeTypes && navigator.mimeTypes.length > 0) {
+        var mimes = navigator.mimeTypes;
+        for (var i=0; i < mimes.length; i++) {
+            message += "<b>" + mimes[i].type + "</b> : " + mimes[i].description + "<br />";
+        }
+    }
+    else {
+        message = "Your browser does not support this example!";
+    }
+    return message;
 }
