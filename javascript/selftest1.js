@@ -13,17 +13,17 @@ function buildPage() {
   header = document.createElement("div");
   header.setAttribute("id", "header");
   header.style.backgroundColor = "black";
-  header.style.width = "100%";
+  header.style.width = bodyRect.width;
   header.style.height = "80";
   logoContainer = document.createElement("div");
   logoContainer.setAttribute("id", "logoContainer");
   logoContainer.style.position = "fixed";
-  logoContainer.style.right = "20px";
+  logoContainer.style.right = "50px";
   logoContainer.style.top = "20px";
-  logoContainer.style.backgroundColor = "#ccc";
-  logoContainer.style.width = "40px";
+  logoContainer.style.width = "30px";
   logoContainer.style.height = "30px";
-  logoContainer.innerHTML = "<img src='img/logo.svg' width=40px height=30px>";
+  logoContainer.style.backgroundColor = "black";
+  logoContainer.innerHTML = "<img src='img/logo.svg' width=60px>";
   footer = header.cloneNode(true);
   footer.setAttribute("id", "footer");
   footer.style.backgroundColor = "black";
@@ -48,7 +48,7 @@ function buildPage() {
     "<br> dit window met een drag van de rechter onderhoek.";
   textNode2 = textNode.cloneNode(true);
   textNode2.innerHTML = "<H2>Div2</H2>" +
-    "Browser: " + navigator.appName + " " + navigator.appCodeName + navigator.userAgent + 
+    "Browser: " + navigator.appName + " " + navigator.appCodeName + navigator.userAgent +
     "<br> Support:" + GetMimeTypes() +
     "<br> Taalinstelling:" + navigator.language || navigator.userLanguage;
 
@@ -87,6 +87,7 @@ function buildPage() {
   //De afmetingen van de div elementen aanpassen aan de veranderende afmeting van het windows
   window.addEventListener("resize", function(event) {
     div_height = (document.body.getBoundingClientRect().height - (header.getBoundingClientRect().height * 2)) / 2;
+    max_width = document.body.getBoundingClientRect().width;
     div1.style.height = div_height + "px";
     div2.style.height = div_height + "px";
     textNode.innerHTML = "<H2>Div1</H2>" +
@@ -96,6 +97,11 @@ function buildPage() {
       " <br> bottom: " + div1.getBoundingClientRect().bottom +
       " <br> right: " + div1.getBoundingClientRect().right +
       " <br> left: " + div1.getBoundingClientRect().left;
+      header.style.width = max_width;
+      footer.style.width = max_width;
+      div1.style.width = max_width;
+      div2.style.width = max_width;
+
   })
 
 }
