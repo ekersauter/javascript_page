@@ -48,7 +48,7 @@ function buildPage() {
   textNode.innerHTML = "<H2>" + div1.id + "</H2>Verander de hoogte en de breedte van" +
     "<br> dit window met een drag van de rechter onderhoek.";
   textNode2 = textNode.cloneNode(true);
-  textNode2.innerHTML = "<H2>Div2</H2>" +
+  textNode2.innerHTML = "<H2> Div2 </H2>" +
     "Browser: " + navigator.appName + " " + navigator.appCodeName + navigator.userAgent +
     "<br> Support:" + GetMimeTypes() +
     "<br> Taalinstelling:" + navigator.language || navigator.userLanguage;
